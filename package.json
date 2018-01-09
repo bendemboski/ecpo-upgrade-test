@@ -1,8 +1,8 @@
 {
-  "name": "ecli-upgrade-test",
+  "name": "ecpo-upgrade-test",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for ecli-upgrade-test goes here",
+  "description": "Small description for ecpo-upgrade-test goes here",
   "license": "MIT",
   "author": "",
   "directories": {
@@ -13,7 +13,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember try:each"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -26,7 +26,8 @@
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.1.1",
+    "ember-cli-page-object": "git+ssh://git@github.com/bendemboski/ember-cli-page-object.git#15dc3d41b44035f90901498835605f04998901d1",
+    "ember-cli-qunit": "^4.2.1",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",

@@ -1,7 +1,19 @@
+import require from 'require';
 import Application from '../app';
-import { setApplication } from '@ember/test-helpers';
-import { start } from 'ember-qunit';
+import resolver from './helpers/resolver';
+import {
+  setResolver
+} from 'ember-qunit';
 
-setApplication(Application.create({ autoboot: false }));
+if (require.has('@ember/test-helpers')) {
+  const { setApplication } = require('@ember/test-helpers');
+  const { start } = require('ember-qunit');
 
-start();
+  setApplication(Application.create({ autoboot: false }));
+  start();
+} else {
+  const { start } = require('ember-cli-qunit');
+
+  setResolver(resolver);
+  start();
+}

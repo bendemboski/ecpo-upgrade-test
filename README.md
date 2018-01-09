@@ -1,51 +1,23 @@
-# ecli-upgrade-test
+# ecpo-upgrade-test
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a project meant to test different scenarios using `ember-cli-page-object`
+to help make sure upgrading to a version that supports `RFC232` and `RFC268`
+goes smoothly.
 
-## Prerequisites
+There are application three scenarios we care about:
 
-You will need the following things properly installed on your computer.
+* **old**: before any `RFC232`/`RFC268` was implemented
+* **transitional**: a brief window when `RFC232` was implemented`, but `@ember/test-helpers` didn't yet export any DOM helpers
+* **new**: now, when `RFC232`/`RFC268` are both fully implemented
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+This project uses `ember-try` to run each of those scenarios, and
+`tests/upgrade-test.js` makes sure that each scenario is set up with the correct
+`ember-qunit` and `@ember/test-helpers`, and then verifies that all the right
+tests work in all the right ways.
 
-## Installation
+NOTE: Due to how `yarn` does its hoisting, we have to use `npm` or we can't set
+up the older scenarios correctly.
 
-* `git clone <repository-url>` this repository
-* `cd ecli-upgrade-test`
-* `npm install`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+`package.json` contains a commit hash for `ember-cli-page-object`, which is the
+latest commit in the pull request to introduce `RFC232`/`RFC268` support. After
+ensuring that that hash points where you want it to, just run `npm test`.

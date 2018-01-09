@@ -3,7 +3,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'ecli-upgrade-test',
+    modulePrefix: 'ecpo-upgrade-test',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -41,6 +41,8 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.emberTryScenario = process.env.EMBER_TRY_CURRENT_SCENARIO;
   }
 
   if (environment === 'production') {
